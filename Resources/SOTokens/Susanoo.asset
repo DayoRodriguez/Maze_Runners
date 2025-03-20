@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a96c493ea44a44a9110e092785d49e, type: 3}
+  m_Name: Susanoo
+  m_EditorClassIdentifier: 
+  name: Susanoo
+  skill: Tormenta de Susanoo
+  skillDescription: Disminuye en 30 los lp de las tokens enemigas en un area de 20
+    cm y las paraliza por 2 turnos
+  tokenHistory: Dios de las tormentas, conocido por derrotar a Yamata no Orochi
+  lp: 150
+  speed: 11
+  colderTime: 7
+  universe: Mitologia Japonesa
+  personaje: {fileID: 7685687451051031800, guid: 32c7fb9b2f4cbac429a9fff03ce96436, type: 3}

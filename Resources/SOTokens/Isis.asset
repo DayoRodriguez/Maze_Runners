@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a96c493ea44a44a9110e092785d49e, type: 3}
+  m_Name: Isis
+  m_EditorClassIdentifier: 
+  name: Isis
+  skill: "Curaci\xF3n Divina"
+  skillDescription: Restaura la vida de aliados cercanos.
+  tokenHistory: Diosa de la magia y la maternidad.
+  lp: 150
+  speed: 12
+  colderTime: 7
+  universe: Mitologia Egipcia
+  personaje: {fileID: 7685687451051031800, guid: 32c7fb9b2f4cbac429a9fff03ce96436, type: 3}

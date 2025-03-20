@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a96c493ea44a44a9110e092785d49e, type: 3}
+  m_Name: Anubis
+  m_EditorClassIdentifier: 
+  name: Anubis
+  skill: Juicio de las Almas
+  skillDescription: Invoca espectros que atacan a los enemigos.
+  tokenHistory: Dios de la muerte y protector de los muertos
+  lp: 160
+  speed: 11
+  colderTime: 8
+  universe: Mitologia Egipcia
+  personaje: {fileID: 7685687451051031800, guid: 32c7fb9b2f4cbac429a9fff03ce96436, type: 3}
