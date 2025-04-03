@@ -7,26 +7,33 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class Player : MonoBehaviour
 {
-    public Token[] tokens;
+    public Token[] playerTokens;
     public Token chooseToken;
     public Rigidbody rbToken;
     public GameObject playerViewCamera;
     public GameObject miniMapCamera;
     Transform playerPosition;
     int index = 0;
+    float mouseSensivity = 100f;//Sensivilidad del mouse
+    float pichLimit = 80f;//Limite del angulo Vertical
+    float pich = 0f;//Rotacion Vertical
+    float yaw = 0f;
+    public float mouseX;
+    public float mouseY;
     public float verticalInput;
     public float horizontalInput;
-
+    public bool HasMoveToken{get;set;}
+    public int counter = 0;
     // Start is called before the first frame update
     void Awake()
     {
-        tokens = Resources.LoadAll<Token>("SOTokens");
+        GetTokens(5);
     }
     void Start()
-    {
+    {        
+        Utils.DisableCursor();
         playerViewCamera = GameObject.Find("Player_View");
         miniMapCamera = GameObject.Find("Map_View");
-        playerPosition = GameObject.Find(chooseToken.name).transform;
         ChooseToken();
         RotateCamera();
     }
@@ -36,19 +43,36 @@ public class Player : MonoBehaviour
     {   
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
+        mouseX=Input.GetAxis("Mouse X")*mouseSensivity*Time.deltaTime;
+        mouseY=Input.GetAxis("Mouse Y")*mouseSensivity*Time.deltaTime;
         ChooseToken();
-        MoveToken(chooseToken);
+        if(!HasMoveToken)
+        {
+            MoveToken(chooseToken);
+        }
         RotateCamera();
         UpdateMiniMapCam();
+    }
+    void GetTokens(int amout)
+    {   
+        Token[] tokens = Resources.LoadAll<Token>("SOTokens");
+
+        playerTokens = new Token[amout];
+
+        for (int i = 0; i < amout; i++)
+        {
+            int index = UnityEngine.Random.Range(0, tokens.Length);
+            playerTokens[i] = tokens[index];    
+        }
     }
 
     void ChooseToken()
     {
         if(Input.GetKeyDown(KeyCode.T)) index+=1;
-        if(index >= tokens.Length) index = 0;
-        if(tokens[index] != null)
+        if(index >= playerTokens.Length) index = 0;
+        if(playerTokens[index] != null)
         {
-            chooseToken = tokens[index];
+            chooseToken = playerTokens[index];
 
             playerPosition = GameObject.Find(chooseToken.name).transform;
 
@@ -56,30 +80,36 @@ public class Player : MonoBehaviour
             {
                 playerViewCamera.transform.SetParent(playerPosition);
                 playerViewCamera.transform.position = playerPosition.position;
+                playerViewCamera.transform.rotation = playerPosition.rotation;
             }
             MoveToken(chooseToken);
         }
     }
     public void MoveToken(Token token)
     {
-        //Get the Forward Camera's direction
-        Vector3 cameraForward = playerViewCamera.transform.forward;
-        cameraForward.y = 0;
-        cameraForward.Normalize();
+        Vector3 movementDirection = new Vector3(horizontalInput, 0,verticalInput).normalized;
 
-        Vector3 force = cameraForward * verticalInput * token.Speed * Time.deltaTime;
-        rbToken = GameObject.Find(token.name).GetComponent<Rigidbody>();
+        Vector3 displacement = movementDirection * 1 * Time.deltaTime;
+            
+        playerPosition.Translate(displacement, Space.Self);
+        playerViewCamera.transform.position = playerPosition.transform.position;
+        playerViewCamera.transform.rotation = playerPosition.transform.rotation;
         
-        if(rbToken != null)
-        {
-            token.Move(rbToken,force);
-        }
+        rbToken = GameObject.Find(token.name).GetComponent<Rigidbody>();
     }
     void RotateCamera()
     {
         if(playerViewCamera != null)
         {
-            playerViewCamera.transform.Rotate(Vector3.up, horizontalInput * chooseToken.Speed * Time.deltaTime);
+            //Actualiza la rotacion vertical de la camera
+            pich -= mouseY;
+            pich = Mathf.Clamp(pich, -pichLimit,pichLimit);
+
+            //Acumula la rotacion en el eje horizontal
+            yaw += mouseX;
+
+            //Aplica Rotacion a la Camera
+            playerViewCamera.transform.localRotation = Quaternion.Euler(pich,yaw,0);
         }
     }
     void UpdateMiniMapCam()

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2303422787813866833}
   - component: {fileID: 7406620521229353302}
   - component: {fileID: 7285626061565362762}
-  - component: {fileID: 9177759390925334790}
+  - component: {fileID: 2567637121952050788}
   m_Layer: 0
   m_Name: Way_Benefit
   m_TagString: Benefit
@@ -101,11 +101,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.99, y: 1, z: 0.99}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7285626061565362762
 Rigidbody:
@@ -130,11 +130,11 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &9177759390925334790
+--- !u!114 &2567637121952050788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,6 +143,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8473950439942459107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48fd4a9a377de0942a8a9481f2df771b, type: 3}
+  m_Script: {fileID: 11500000, guid: 62a92ce8574f8cd449f39d18231702ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: Benefit
+  effect: {fileID: 0}

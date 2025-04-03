@@ -33,4 +33,42 @@ public class Token : ScriptableObject
     {
         rbPersonaje.AddForce(force,ForceMode.Impulse);
     }
+    public void ChangeLp(int amout,string operation)
+    {
+        if(operation.Equals("sum"))
+        {
+            lp += amout;
+        }
+        else if(operation.Equals("rest"))
+        {
+            lp -= amout;
+        }
+        else if (operation.Equals("mult"))
+        {
+            lp *= amout;
+        }
+        else
+        {
+            lp /= amout;
+        }
+    }
+    public void ChangeSpeed(int amout,string operation)
+    {
+        if(operation.Equals("sum"))
+        {
+            speed += amout;
+        }
+        else if(operation.Equals("rest"))
+        {
+            speed -= amout;
+        }
+        else if (operation.Equals("mult"))
+        {
+            speed *= amout;
+        }
+        else
+        {
+            speed /= amout;
+        }
+    }
 }

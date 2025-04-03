@@ -11,9 +11,10 @@ public class MazeInstantiate : MonoBehaviour
     [SerializeField] GameObject Portal;
     string[,] maze;
     public List<Vector3> ways = new List<Vector3>();
+    public List<Vector3> portals = new List<Vector3>();
     void Awake()
     {
-        maze = Maze.MazeCreate(100, 100);
+        maze = Maze.MazeCreate(80, 80);
 
         Vector3 initalVector = new Vector3(0, 1, 0);
 
@@ -24,7 +25,8 @@ public class MazeInstantiate : MonoBehaviour
                 if("Way".Equals(maze[i,j]))
                 {
                     Instantiate(way, initalVector ,way.transform.rotation);
-                    ways.Add(new Vector3(initalVector.x,initalVector.y,initalVector.z));
+                    //ways.Add(new Vector3(initalVector.x,initalVector.y,initalVector.z));
+                    ways.Add(initalVector);
                     initalVector.x += way.transform.localScale.x;
                 }
                 else if("Tramp".Equals(maze[i,j]))
@@ -42,6 +44,7 @@ public class MazeInstantiate : MonoBehaviour
                     initalVector.y += 1;
                     Instantiate(Portal, initalVector ,way.transform.rotation);
                     initalVector.y -= 1;
+                    portals.Add(initalVector);
                     initalVector.x += Portal.transform.localScale.x;
                 }
                 else

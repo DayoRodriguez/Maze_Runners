@@ -16,7 +16,8 @@ MonoBehaviour:
   skill: 
   skillDescription: 
   tokenHistory: 
-  lp: 0
+  lp: 80
   speed: 100
   colderTime: 0
+  universe: 
   personaje: {fileID: 7685687451051031800, guid: 32c7fb9b2f4cbac429a9fff03ce96436, type: 3}

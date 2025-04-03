@@ -16,7 +16,8 @@ MonoBehaviour:
   skill: Follarse a Eva
   skillDescription: Coje a Eva y le come todo lo negro
   tokenHistory: Creado por Dios
-  lp: 50
+  lp: 80
   speed: 100
   colderTime: 5
+  universe: 
   personaje: {fileID: 7685687451051031800, guid: 32c7fb9b2f4cbac429a9fff03ce96436, type: 3}
